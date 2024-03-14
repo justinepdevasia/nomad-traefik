@@ -22,6 +22,9 @@ job "traefik" {
         args = [
           "--api.dashboard=true",
           "--api.insecure=true", # not for production
+          "--ping=true",
+          "--ping.terminatingStatusCode=204",
+          "--ping.entryPoint=web",
           "--entrypoints.web.address=:${NOMAD_PORT_http}",
           "--entrypoints.traefik.address=:${NOMAD_PORT_admin}",
           "--providers.nomad=true",
